@@ -472,7 +472,7 @@ function BtnDilasi_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
     img =getGlobalt();
-    mask = [0,1,1;0,1,0;0,0,0];
+    mask = [0,1,1;0,1,1;0,1,1];
     d = Dilasi(img,mask,size(mask,1));
     %setGlobalt(d);
     axes(handles.axes1);
