@@ -1,7 +1,7 @@
 close all;
 clear;
 image=imread('34.jpg');
-mask = [0,1,1;0,1,0;0,0,0];
+mask = [1,1,1;1,1,1;1,1,1];
 figure
 imshow(sobel(image));
 figure

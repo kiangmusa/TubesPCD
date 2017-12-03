@@ -22,7 +22,7 @@ function varargout = tugas3(varargin)
 
 % Edit the above text to modify the response to help tugas3
 
-% Last Modified by GUIDE v2.5 23-Oct-2017 17:40:27
+% Last Modified by GUIDE v2.5 04-Dec-2017 01:48:53
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -50,7 +50,13 @@ function setGlobalt(val)
 function r = getGlobalt
     global t
     r = t;
+function setGlobalImage(val)
+    global d
+    d = val;
     
+function r = getGlobalImage
+    global d
+    r = d;    
 function setGlobals(val)
     global s
     s = val;
@@ -65,6 +71,13 @@ function setGlobald(val)
 function r = getGlobald
     global de
     r = de;
+function setGlobalMask(val)
+    global mask
+    mask = val;
+    
+function r = getGlobalMask
+    global mask
+    r = mask;
 
 % --- Executes just before tugas3 is made visible.
 function tugas3_OpeningFcn(hObject, eventdata, handles, varargin)
@@ -105,10 +118,13 @@ function btnbrowse_Callback(hObject, eventdata, handles)
     img = imread(filename);
     axes(handles.axes1);
     imshow(img);
+    setGlobalImage(img)
     setGlobalt(img);
     res=[size(img,1),size(img,2)];
     res = strcat(int2str(res(1)),'x',int2str(res(2)));
     set(handles.resol,'string',res);
+    mask = [0,1,1;0,1,0;0,0,0];
+    setGlobalMask(mask);
     
 
 % hObject    handle to btnbrowse (see GCBO)
@@ -426,3 +442,56 @@ function btnOutputHisto_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
     outputHisto(getGlobalt);
     
+
+
+% --- Executes on button press in BtnReset.
+function BtnReset_Callback(hObject, eventdata, handles)
+% hObject    handle to BtnReset (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+    img = getGlobalImage();
+    setGlobalt(img);
+    axes(handles.axes1);
+    imshow(img);
+    
+
+% --- Executes on button press in BtnEdge.
+function BtnEdge_Callback(hObject, eventdata, handles)
+% hObject    handle to BtnEdge (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+    img =getGlobalt();
+    d = sobel(img);
+    setGlobalt(d);
+    axes(handles.axes1);
+    imshow(d);
+
+% --- Executes on button press in BtnDilasi.
+function BtnDilasi_Callback(hObject, eventdata, handles)
+% hObject    handle to BtnDilasi (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+    img =getGlobalt();
+    mask = [0,1,1;0,1,0;0,0,0];
+    d = Dilasi(img,mask,size(mask,1));
+    %setGlobalt(d);
+    axes(handles.axes1);
+    imshow(d);
+
+% --- Executes on button press in BtnErosi.
+function BtnErosi_Callback(hObject, eventdata, handles)
+% hObject    handle to BtnErosi (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+    img =getGlobalt();
+    mask = [0,1,1;0,1,0;0,0,0];
+    d = Erosi(img,mask,size(mask,1));
+    %setGlobalt(d);
+    axes(handles.axes1);
+    imshow(d);
+
+% --- Executes on button press in BtnThin.
+function BtnThin_Callback(hObject, eventdata, handles)
+% hObject    handle to BtnThin (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
