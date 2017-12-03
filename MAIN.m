@@ -3,6 +3,8 @@ clear;
 image=imread('34.jpg');
 mask = [0,1,1;0,1,0;0,0,0];
 figure
+imshow(sobel(image));
+figure
 imshow(im2bw(image));
 figure
 imshow(Dilasi(image,mask,3));

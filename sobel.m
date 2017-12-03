@@ -14,7 +14,7 @@ for i = 1+p : size(Apad,1)-p
         M = Apad(i-p:i+p,j-p:j+p);
         konv1 = sum(sum(M.*gx));
         konv2 = sum(sum(M.*gy));
-        konv = konv1+konv2; 
+        konv = sqrt(konv1^2+konv2^2); 
         H(i,j)= konv;
     end
 end
