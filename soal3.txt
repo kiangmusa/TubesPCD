@@ -1,0 +1,17 @@
+Buatlah program potosop. GUI based. yg bisa melakukan
+1. Open image RGB
+2. Show image tsb
+3. Rotate image kelipatan 90 derajat, clock wise
+4. Rotate image sesuai derajat dari user.
+5. Zoom in, zoom out. Presentase zoom dr user.
+6. Flipping kiri kanan atas bawah
+7. Crop image pakai mouse (rectangle). Hasil crop ditampilkan.
+8.bisa mensave image setelah dilakukan proses editing.
+9. Menampilkan resolusi image yg sedang di proses.
+
+Aturan pengerjaan
+1. Soal 1 dan 2 boleh pakai modul. Sisanya harus coding dari nol.
+2. Dikumpulkan maksimal selasa 19 sept 2017 jam 23.59. Link kompulir menyusul.
+3. Bahasa pemrograman bebas.
+4. FAHAMI YG ANDA CODING!
+5. Yg telat ngumpulin tubes tahap 1 maka nilai akhir tubes nya dikorting 20 persen.
